@@ -3,10 +3,16 @@ import { useSelector } from 'react-redux';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Typography } from '@mui/material';
+import { Box, Theme, Typography, createStyles, makeStyles } from '@mui/material';
 import BtnThemeToogle from './components/btnThemeToogle';
 import { selectPreferDarkMode } from './redux/themeSlice';
+import { ThemeConfig } from './themeConfig'
 import './App.css'
+import SearchBar from './components/searchBar';
+import SearchContainer from './components/searchContainer';
+
+
+
 
 
 
@@ -20,6 +26,8 @@ function App() {
         palette: {
           mode: (prefersDarkModeControl ?? prefersDarkMode) ? 'dark' : 'light',
         },
+
+
       }),
     [prefersDarkMode, prefersDarkModeControl],
   );
@@ -27,12 +35,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <main className={` w-screen h-screen ${theme.palette.mode}Mode`}>
+      <main className={` w-screen h-screen ${theme.palette.mode}Mode flex justify-center`}>
         <BtnThemeToogle />
-        <Typography>
-          This app is using the dark mode
+        <div className='p-[42px] w-full max-w-[700px]' >
+          <SearchContainer />
+          <div className=' mt-[17px]'>
+            asd
+          </div>
+          <Typography className=' '>
+            This app is using the dark mode
 
-        </Typography>
+          </Typography>
+        </div>
       </main>
     </ThemeProvider>
   )

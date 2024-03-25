@@ -15,9 +15,12 @@ const BtnThemeToogle = () => {
   }
 
   return (
-    <IconButton className=' float-end' onClick={handleToogleMode}>
-      {currentMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
-    </IconButton>
+    <div className='fixed right-1 top-1'>
+      <IconButton onClick={handleToogleMode}>
+        {currentMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+      </IconButton>
+    </div>
+
   )
 }
 
