@@ -27,7 +27,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <main>
+      <main className={` w-screen h-screen ${theme.palette.mode}Mode`}>
         <BtnThemeToogle />
         <Typography>
           This app is using the dark mode
