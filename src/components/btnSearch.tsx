@@ -4,7 +4,8 @@ import { useEffect, useMemo } from "react"
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedCountry } from "../redux/searchCountrySlice";
-import { setSelectedWeather, useLazyGetWeatherQuery } from "../redux/searchWeatherSlice";
+import { useLazyGetWeatherQuery } from "../redux/searchWeatherSlice";
+import { addSearchHistory } from "../redux/searchHistorySlice";
 // import { useStyles } from "../themeConfig"
 
 const BtnSearch = () => {
@@ -12,7 +13,8 @@ const BtnSearch = () => {
   const dispatch = useDispatch()
   const [getWeather, { data, isLoading, error }] = useLazyGetWeatherQuery()
   useEffect(() => {
-    dispatch(setSelectedWeather(data))
+    if (data === null || data === undefined) return
+    dispatch(addSearchHistory(data))
   }, [data])
 
   const handleWeatherSearch = () => {

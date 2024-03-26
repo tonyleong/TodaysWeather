@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import theme from './redux/themeSlice'
 import country from './redux/searchCountrySlice'
-import weather from './redux/searchWeatherSlice'
+import searchHistory from './redux/searchHistorySlice'
 import { countryApi } from './redux/searchCountrySlice'
 import { weatherApi } from './redux/searchWeatherSlice'
 
@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     theme,
     country,
-    weather,
+    searchHistory,
     [countryApi.reducerPath]: countryApi.reducer,
     [weatherApi.reducerPath]: weatherApi.reducer
   },

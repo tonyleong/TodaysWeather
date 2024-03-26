@@ -1,13 +1,13 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
-import { selectWeather } from "../redux/searchWeatherSlice";
 import { useSelector } from "react-redux";
 import { selectSelectedCountry } from "../redux/searchCountrySlice";
+import { selectLatestSearchHistory } from "../redux/searchHistorySlice";
 
 const WeatherHeader = () => {
   const theme = useTheme()
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
-  const weatherState = useSelector(selectWeather)
+  const weatherState = useSelector(selectLatestSearchHistory)
   const selectedCountry = useSelector(selectSelectedCountry)
   const temp = weatherState?.main?.temp === undefined ? '-' : Math.round(weatherState?.main?.temp ?? 0)
   const temp_min = weatherState?.main?.temp_min === undefined ? '-' : Math.round(weatherState?.main?.temp_min ?? 0)
@@ -25,8 +25,8 @@ const WeatherHeader = () => {
         {!sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Humidity: {weatherState?.main?.humidity ?? '-'}%</Typography>}
       </Stack>
       <Stack direction='row'>
-        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} fontWeight={600}>{selectedCountry && weatherState ? `${selectedCountry?.name}, ${selectedCountry?.country}` : '-'}</Typography>
-        <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >01-09-2022 09:41am</Typography>
+        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} fontWeight={600}>{weatherState ? `${weatherState?.name}, ${weatherState?.sys?.country}` : '-'}</Typography>
+        <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{weatherState?.timestamp}</Typography>
         {sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Humidity: {weatherState?.main?.humidity ?? '-'}%</Typography>}
         {sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{weatherState?.weather?.[0]?.main ?? '-'}</Typography>}
       </Stack>
