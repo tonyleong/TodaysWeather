@@ -9,7 +9,7 @@ const WeatherHeader = () => {
     <Stack className="w-full" rowGap={1}>
       <Typography fontSize={14} sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].primary }} >Today's Weather</Typography>
       <Stack direction='row' alignItems='baseline' >
-        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].main }} fontSize={62} lineHeight='58px' fontWeight={700}>26°</Typography>
+        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].main, fontSize: { xs: '4rem', sm: '5rem' }, fontWeight: 700 }} lineHeight='58px' >26°</Typography>
         {!sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Clouds</Typography>}
       </Stack>
       <Stack direction='row'>
