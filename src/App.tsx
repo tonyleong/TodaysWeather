@@ -10,6 +10,10 @@ import { ThemeConfig } from './themeConfig'
 import './App.css'
 import SearchBar from './components/searchBar';
 import SearchContainer from './components/searchContainer';
+import DisplayBoard from './components/displayBoard';
+
+import { Image } from '@mui/icons-material';
+import WeatherHeader from './components/weatherHeader';
 
 
 
@@ -26,8 +30,6 @@ function App() {
         palette: {
           mode: (prefersDarkModeControl ?? prefersDarkMode) ? 'dark' : 'light',
         },
-
-
       }),
     [prefersDarkMode, prefersDarkModeControl],
   );
@@ -35,17 +37,19 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <main className={` w-screen h-screen ${theme.palette.mode}Mode flex justify-center`}>
+      <main className={` w-full h-full ${theme.palette.mode}Mode flex justify-center`}>
         <BtnThemeToogle />
         <div className='p-[42px] w-full max-w-[700px]' >
           <SearchContainer />
           <div className=' mt-[17px]'>
-            asd
+            <DisplayBoard >
+              <WeatherHeader />
+            </DisplayBoard>
           </div>
-          <Typography className=' '>
+          {/* <Typography className=' '>
             This app is using the dark mode
 
-          </Typography>
+          </Typography> */}
         </div>
       </main>
     </ThemeProvider>

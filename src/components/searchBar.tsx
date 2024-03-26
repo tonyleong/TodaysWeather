@@ -1,8 +1,5 @@
-import { Autocomplete, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Autocomplete, TextField, useMediaQuery, useTheme } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
-import { useMemo } from "react"
-import SearchIcon from '@mui/icons-material/Search';
-// import { useStyles } from "../themeConfig"
 
 const SearchBar = () => {
   const theme = useTheme();
