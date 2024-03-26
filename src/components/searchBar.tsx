@@ -1,35 +1,33 @@
-import { IconButton, TextField, Typography, useTheme } from "@mui/material"
+import { Autocomplete, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
 import { useMemo } from "react"
 import SearchIcon from '@mui/icons-material/Search';
 // import { useStyles } from "../themeConfig"
 
 const SearchBar = () => {
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.up('sm'));
+  console.log(sm)
 
   return (
-
-    <TextField fullWidth
-      variant="standard"
-      label="Country"
+    <Autocomplete
+      size={sm ? 'medium' : "small"}
       sx={{
         backgroundColor: (theme) => ThemeConfig.searchBar[theme.palette.mode].background,
-        color: (theme) => ThemeConfig.searchBar[theme.palette.mode].color,
-        height: {
-          xs: '40px',
-          sm: '60px',
-        },
         borderRadius: {
           xs: '8px',
           sm: '20px',
         },
-        '.MuiInput-underline::before, .MuiInput-underline::after, .MuiInput-underline:hover::before': { borderBottom: 'none' },
-        paddingLeft: '1rem',
-        'label': { paddingLeft: '1rem' }
+        color: (theme) => ThemeConfig.searchBar[theme.palette.mode].color,
+        "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+          border: "none"
+        }
       }}
-    >
-      search here
-    </TextField>
+      fullWidth
+      options={[]}
+      renderInput={(props) => <TextField {...props} label="Country" />}
 
+    />
 
   )
 }
