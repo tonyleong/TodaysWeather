@@ -28,7 +28,10 @@ const DisplayBoard = ({ children }: { children: ReactNode }) => {
       paddingY: {
         xs: '20px',
         sm: '45px'
-      }
+      },
+      display: 'flex',
+      flexDirection: 'column',
+      rowGap: 4
     }}
     >
       <img src={SunnyImage} className=' w-[60%] max-h-[157px] max-w-[157px] sm:max-h-[250px] sm:max-w-[280px] absolute right-0  -top-14 sm:-top-24 sm:right-3 z-10' />

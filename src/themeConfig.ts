@@ -41,5 +41,36 @@ export const ThemeConfig = {
       secondary: 'rgba(102,102,102)',
       main: 'rgba(108,64,181)'
     }
+  },
+  searchHistory: {
+    dark: {
+      background: 'rgba(26, 26, 26, 0.3)'
+    },
+    light: {
+      background: 'rgba(255, 255, 255, 0.2)'
+    }
+  },
+  historyItem: {
+    dark: {
+
+      primary: 'rgba(255, 255, 255, 1)',
+      secondary: 'rgba(255, 255, 255, 0.5)',
+      background: 'rgba(26, 26, 26, 0.5)',
+      iconButton: {
+        color: 'rgba(255,255,255)',
+        border: '2px solid rgba(255,255,255,0.4)',
+        backgroundColor: 'unset'
+      }
+    },
+    light: {
+      primary: 'rgba(0, 0, 0)',
+      secondary: 'rgba(0, 0, 0)',
+      background: 'rgba(255, 255, 255, 0.4)',
+      iconButton: {
+        color: '#000',
+        border: 'none',
+        backgroundColor: '#fff'
+      }
+    },
   }
 }

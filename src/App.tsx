@@ -14,6 +14,7 @@ import DisplayBoard from './components/displayBoard';
 
 import { Image } from '@mui/icons-material';
 import WeatherHeader from './components/weatherHeader';
+import SearchHistory from './components/searchHistory';
 
 
 
@@ -44,6 +45,7 @@ function App() {
           <div className=' mt-[17px]'>
             <DisplayBoard >
               <WeatherHeader />
+              <SearchHistory />
             </DisplayBoard>
           </div>
           {/* <Typography className=' '>

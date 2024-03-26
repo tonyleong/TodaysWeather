@@ -4,8 +4,6 @@ import { ThemeConfig } from "../themeConfig"
 const SearchBar = () => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
-  console.log(sm)
-
   return (
     <Autocomplete
       size={sm ? 'medium' : "small"}
