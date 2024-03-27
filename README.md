@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Today's Weather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project allows users to check the weather for a specific location. It features a dark and light mode toggle and stores search history in local storage to prevent data loss after restarting the application.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run this project locally, follow these steps:
 
-## Expanding the ESLint configuration
+1. Clone the repository:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    ```bash
+    git clone https://github.com/tonyleong/TodaysWeather.git
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Navigate to the project directory:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+    ```bash
+    cd todays-weather
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+To start the local server, run:
+
+```bash
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Once the server is running, open your web browser and navigate to http://localhost:5173 to use the application.
+
+## Extra Features
+
+### 1. Dark and Light Mode Toggle
+You can switch between dark and light modes to customize your viewing experience.
+
+### 2. Search History
+The application stores your search history in local storage, so you can easily access your past searches even after restarting the application.
