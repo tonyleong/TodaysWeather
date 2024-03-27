@@ -17,6 +17,7 @@ const SearchHistory = () => {
       <Stack rowGap={2}>
         {Object.keys(searchHistory)?.length === 0 && <Typography className=" text-gray-500 text-center">No History Found</Typography>}
         {Object.entries(searchHistory)
+          //sort by timestamp desc
           ?.sort(([_, prevValue], [__, nextValue]) => (nextValue.timestamp - prevValue.timestamp))
           ?.map(([key, value]) => (<HistoryItem key={`historyItem-${key}`} data={value} />))
         }

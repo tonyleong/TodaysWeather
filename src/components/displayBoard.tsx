@@ -19,7 +19,7 @@ const DisplayBoard = ({ children }: { children: ReactNode }) => {
         xs: '20px',
         sm: '40px'
       },
-      height: '1000px',
+      minHeight: '700px',
       width: '100%',
       paddingX: {
         xs: '20px',
