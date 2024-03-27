@@ -1,6 +1,6 @@
-import { IconButton, TextField, Typography, useTheme } from "@mui/material"
+import { IconButton } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
-import { useEffect, useMemo } from "react"
+import { useEffect } from "react"
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedCountry } from "../redux/searchCountrySlice";
