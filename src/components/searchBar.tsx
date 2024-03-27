@@ -3,6 +3,7 @@ import { ThemeConfig } from "../themeConfig"
 import { SyntheticEvent, useEffect, useState } from "react";
 import { setSelectedCountry, useLazyGetCountriesQuery } from "../redux/searchCountrySlice";
 import { useDispatch } from "react-redux";
+import { useSnackbar } from "../functions/hooks";
 
 export type CountryListType = {
   lat: number,
@@ -20,7 +21,18 @@ const SearchBar = () => {
     setInput(val)
   }
 
-  const [getCountry, { data: countryList, error, isLoading }] = useLazyGetCountriesQuery()
+  const [getCountry, { data: countryList, error }] = useLazyGetCountriesQuery()
+  const { showSnackbar } = useSnackbar()
+
+  useEffect(() => {
+    if (!error) return
+    if ('status' in error) {
+      const errMsg = 'error' in error ? error.error : JSON.stringify(error.data)
+      showSnackbar(errMsg, 'error')
+    } else {
+      showSnackbar(error.message ?? '', 'error')
+    }
+  }, [error])
 
   useEffect(() => {
     let timeout = setTimeout(() => {

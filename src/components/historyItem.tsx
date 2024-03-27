@@ -89,6 +89,7 @@ const HistoryItem = ({ data }: HistoryItemProps) => {
         backgroundColor: theme => ThemeConfig.historyItem[theme.palette.mode].iconButton.backgroundColor
       }}
         onClick={() => handleRemoveHistory(data.id)}
+        disabled={isLoading}
       >
         <DeleteIcon sx={{ opacity: 0.5 }} />
       </IconButton>
