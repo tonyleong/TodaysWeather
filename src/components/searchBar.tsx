@@ -35,6 +35,7 @@ const SearchBar = () => {
   }, [error])
 
   useEffect(() => {
+    if (!input) return
     let timeout = setTimeout(() => {
       getCountry(input)
     }, 500)

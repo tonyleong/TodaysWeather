@@ -21,7 +21,8 @@ export type WeatherApiState = {
     lat: number,
     lon: number
   },
-  id: string
+  id: string,
+
 }
 
 export const weatherApi = createApi({
@@ -30,13 +31,14 @@ export const weatherApi = createApi({
   endpoints: (builder) => ({
     getWeather: builder.query<any, CountryListType>({
       query: (countrySet) => `data/2.5/weather?lat=${countrySet.lat}&lon=${countrySet.lon}&appid=${import.meta.env.VITE_APIKEY}`,
-      transformResponse: (response: WeatherApiState) => {
+      transformResponse: (response: WeatherApiState, _, arg) => {
         // calculation K to C refer to https://www.vedantu.com/chemistry/kelvin-to-celsius 
         response.main.temp = response.main.temp - 273.15
         response.main.temp_min = response.main.temp_min - 273.15
         response.main.temp_max = response.main.temp_max - 273.15
         response.timestamp = new Date().getTime()
         response.id = uuidv4()
+        response.name = `${arg.name}, ${arg.country}`
         return response
       }
     }),

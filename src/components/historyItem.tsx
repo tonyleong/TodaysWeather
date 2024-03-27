@@ -61,7 +61,7 @@ const HistoryItem = ({ data }: HistoryItemProps) => {
           color: theme => ThemeConfig.historyItem[theme.palette.mode].primary,
           fontSize: { xs: '14px', sm: '16px' }
         }}>
-          {`${data?.name}, ${data?.sys?.country}`}
+          {`${data?.name}`}
         </Typography>
         <Typography sx={{
           color: theme => ThemeConfig.historyItem[theme.palette.mode].secondary,

@@ -25,7 +25,7 @@ const WeatherHeader = () => {
         {!sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Humidity: {weatherState?.main?.humidity ?? '-'}%</Typography>}
       </Stack>
       <Stack direction='row'>
-        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} fontWeight={600}>{weatherState ? `${weatherState?.name}, ${weatherState?.sys?.country}` : '-'}</Typography>
+        <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} fontWeight={600}>{weatherState?.name ?? '-'}</Typography>
         <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{moment(weatherState?.timestamp).format('DD-MM-YYYY hh:mma')}</Typography>
 
         {sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Humidity: {weatherState?.main?.humidity ?? '-'}%</Typography>}
