@@ -6,7 +6,6 @@ import { selectSearchHistory } from "../redux/searchHistorySlice"
 
 const SearchHistory = () => {
   const searchHistory = useSelector(selectSearchHistory)
-  console.log(searchHistory)
   return (
     <Paper sx={{
       backgroundColor: theme => ThemeConfig.searchHistory[theme.palette.mode].background,
@@ -16,8 +15,11 @@ const SearchHistory = () => {
     }}>
       <Typography sx={{ marginLeft: '3px', marginBottom: '26px' }}>Search History</Typography>
       <Stack rowGap={2}>
-        {searchHistory?.length === 0 && <Typography className=" text-gray-500 text-center">No History Found</Typography>}
-        {searchHistory.map((history, i) => (<HistoryItem key={`historyItem-${history.id}`} data={history} />))}
+        {Object.keys(searchHistory)?.length === 0 && <Typography className=" text-gray-500 text-center">No History Found</Typography>}
+        {Object.entries(searchHistory)
+          ?.sort(([_, prevValue], [__, nextValue]) => (nextValue.timestamp - prevValue.timestamp))
+          ?.map(([key, value]) => (<HistoryItem key={`historyItem-${key}`} data={value} />))
+        }
       </Stack>
     </Paper >
   )

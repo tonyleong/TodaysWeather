@@ -3,12 +3,13 @@ import { ThemeConfig } from "../themeConfig"
 import { useSelector } from "react-redux";
 import { selectSelectedCountry } from "../redux/searchCountrySlice";
 import { selectLatestSearchHistory } from "../redux/searchHistorySlice";
+import moment from "moment";
+import { WeatherApiState } from "../redux/searchWeatherSlice";
 
 const WeatherHeader = () => {
   const theme = useTheme()
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
-  const weatherState = useSelector(selectLatestSearchHistory)
-  const selectedCountry = useSelector(selectSelectedCountry)
+  const weatherState: WeatherApiState | null = useSelector(selectLatestSearchHistory)
   const temp = weatherState?.main?.temp === undefined ? '-' : Math.round(weatherState?.main?.temp ?? 0)
   const temp_min = weatherState?.main?.temp_min === undefined ? '-' : Math.round(weatherState?.main?.temp_min ?? 0)
   const temp_max = weatherState?.main?.temp_max === undefined ? '-' : Math.round(weatherState?.main?.temp_max ?? 0)
@@ -26,7 +27,8 @@ const WeatherHeader = () => {
       </Stack>
       <Stack direction='row'>
         <Typography sx={{ color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} fontWeight={600}>{weatherState ? `${weatherState?.name}, ${weatherState?.sys?.country}` : '-'}</Typography>
-        <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{weatherState?.timestamp}</Typography>
+        <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{moment(weatherState?.timestamp).format('DD-MM-YYYY hh:mma')}</Typography>
+
         {sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >Humidity: {weatherState?.main?.humidity ?? '-'}%</Typography>}
         {sm && <Typography sx={{ marginLeft: 'auto', color: theme => ThemeConfig.weatherHeder[theme.palette.mode].secondary }} >{weatherState?.weather?.[0]?.main ?? '-'}</Typography>}
       </Stack>

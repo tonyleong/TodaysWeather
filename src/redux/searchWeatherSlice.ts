@@ -17,7 +17,7 @@ export type WeatherApiState = {
     country: string
   },
   name: string,
-  timestamp: string,
+  timestamp: number,
   coord: {
     lat: number,
     lon: number
@@ -36,7 +36,7 @@ export const weatherApi = createApi({
         response.main.temp = response.main.temp - 273.15
         response.main.temp_min = response.main.temp_min - 273.15
         response.main.temp_max = response.main.temp_max - 273.15
-        response.timestamp = moment().format('DD-MM-YYYY hh:mma')
+        response.timestamp = new Date().getTime()
         response.id = uuidv4()
         return response
       }

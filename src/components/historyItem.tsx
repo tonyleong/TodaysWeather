@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addSearchHistory } from "../redux/searchHistorySlice";
 import { CountryListType } from "./searchBar";
+import moment from "moment";
 
 export type HistoryItemProps = { data: WeatherApiState }
 
@@ -51,8 +52,8 @@ const HistoryItem = ({ data }: HistoryItemProps) => {
                     color: theme => ThemeConfig.historyItem[theme.palette.mode].secondary,
                     fontSize: { xs: '10px', sm: '14px' },
                     marginLeft: { xs: 0, sm: 'auto' }
-                }}
-                >{data?.timestamp}
+                }}>
+                    {moment(data?.timestamp).format('DD-MM-YYYY hh:mma')}
                 </Typography>
             </Stack>
             <IconButton sx={{
