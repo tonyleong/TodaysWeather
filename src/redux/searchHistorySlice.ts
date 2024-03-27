@@ -7,7 +7,7 @@ export interface SearchHistoryState {
 }
 
 const initialState: SearchHistoryState = {
-  data: {},
+  data: JSON.parse(localStorage.getItem('history') ?? '{}'),
 }
 
 export const searchHistorySlice = createSlice({
@@ -16,9 +16,11 @@ export const searchHistorySlice = createSlice({
   reducers: {
     addSearchHistory: (state, action: PayloadAction<WeatherApiState>) => {
       state.data[action.payload.id] = action.payload
+      localStorage.setItem('history', JSON.stringify(state.data))
     },
     removeSearchHistory: (state, action: PayloadAction<string>) => {
       delete state.data[action.payload]
+      localStorage.setItem('history', JSON.stringify(state.data))
     }
   },
 })
