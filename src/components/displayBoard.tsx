@@ -2,7 +2,6 @@ import { Paper } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
 import { ReactNode } from "react"
 import SunnyImage from '../assets/sun.png'
-import CloudImage from '../assets/cloud.png'
 
 const DisplayBoard = ({ children }: { children: ReactNode }) => {
   return (

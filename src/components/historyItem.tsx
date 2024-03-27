@@ -6,8 +6,8 @@ import { WeatherApiState, useLazyGetWeatherQuery } from "../redux/searchWeatherS
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addSearchHistory, removeSearchHistory } from "../redux/searchHistorySlice";
-import { CountryListType } from "./searchBar";
 import moment from "moment";
+import { useSnackbar } from "../functions/hooks";
 
 export type HistoryItemProps = { data: WeatherApiState }
 
@@ -17,6 +17,18 @@ const HistoryItem = ({ data }: HistoryItemProps) => {
   const dispatch = useDispatch()
 
   const [getWeather, { data: searchData, isLoading, error }] = useLazyGetWeatherQuery()
+  const { showSnackbar } = useSnackbar()
+
+  useEffect(() => {
+    if (!error) return
+    if ('status' in error) {
+      const errMsg = 'error' in error ? error.error : JSON.stringify(error.data)
+      showSnackbar(errMsg, 'error')
+    } else {
+      showSnackbar(error.message ?? '', 'error')
+    }
+  }, [error])
+
   useEffect(() => {
     if (searchData === null || searchData === undefined) return
     dispatch(addSearchHistory(searchData))
@@ -33,7 +45,6 @@ const HistoryItem = ({ data }: HistoryItemProps) => {
 
   const handleRemoveHistory = (id: string) => {
     dispatch(removeSearchHistory(id))
-
   }
 
   return (

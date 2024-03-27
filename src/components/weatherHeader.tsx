@@ -1,10 +1,9 @@
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material"
-import { ThemeConfig } from "../themeConfig"
-import { useSelector } from "react-redux";
-import { selectSelectedCountry } from "../redux/searchCountrySlice";
-import { selectLatestSearchHistory } from "../redux/searchHistorySlice";
 import moment from "moment";
+import { useSelector } from "react-redux";
+import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { selectLatestSearchHistory } from "../redux/searchHistorySlice";
 import { WeatherApiState } from "../redux/searchWeatherSlice";
+import { ThemeConfig } from "../themeConfig"
 
 const WeatherHeader = () => {
   const theme = useTheme()

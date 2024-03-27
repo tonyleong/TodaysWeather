@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { CountryListType } from '../components/searchBar'
-import moment from 'moment'
 import { v4 as uuidv4 } from "uuid";
 
 export type WeatherApiState = {

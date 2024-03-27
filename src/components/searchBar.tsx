@@ -1,8 +1,8 @@
 import { Autocomplete, TextField, useMediaQuery, useTheme } from "@mui/material"
 import { ThemeConfig } from "../themeConfig"
 import { SyntheticEvent, useEffect, useState } from "react";
-import { setSelectedCountry, useGetCountriesQuery, useLazyGetCountriesQuery } from "../redux/searchCountrySlice";
-import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCountry, useLazyGetCountriesQuery } from "../redux/searchCountrySlice";
+import { useDispatch } from "react-redux";
 
 export type CountryListType = {
   lat: number,
@@ -16,7 +16,6 @@ const SearchBar = () => {
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const dispatch = useDispatch()
   const [input, setInput] = useState('')
-  // const [searchText, setSearchText] = useState('')
   const handleInput = (_: SyntheticEvent, val: string) => {
     setInput(val)
   }
