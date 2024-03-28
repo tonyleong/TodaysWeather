@@ -1,7 +1,7 @@
 main.darkMode {
-  background: url('src/assets/bg-dark.png');
+  background: url('/src/assets/bg-dark.png');
 }
 
 main.lightMode {
-  background: url('src/assets/bg-light.png');
+  background: url('/src/assets/bg-light.png');
 }
