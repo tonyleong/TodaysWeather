@@ -5,7 +5,7 @@ import { RootState } from '../store'
 
 export const countryApi = createApi({
     reducerPath: 'countryApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://api.openweathermap.org/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_WEATHER_BASE_URL }),
     endpoints: (builder) => ({
         getCountries: builder.query<CountryListType[], string>({
             query: (city) => `geo/1.0/direct?q=${city}&limit=10&appid=${import.meta.env.VITE_APIKEY}`,

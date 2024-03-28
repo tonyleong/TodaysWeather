@@ -27,7 +27,7 @@ export type WeatherApiState = {
 
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://api.openweathermap.org/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_WEATHER_BASE_URL }),
   endpoints: (builder) => ({
     getWeather: builder.query<any, CountryListType>({
       query: (countrySet) => `data/2.5/weather?lat=${countrySet.lat}&lon=${countrySet.lon}&appid=${import.meta.env.VITE_APIKEY}`,
